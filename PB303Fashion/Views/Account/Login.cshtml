@@ -1,0 +1,116 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Majestic Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/admin/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/admin/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/admin/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/admin/images/favicon.png" />
+    <style>
+        .login-with-google-btn {
+            transition: background-color .3s, box-shadow .3s;
+            padding: 12px 16px 12px 42px;
+            border: none;
+            border-radius: 3px;
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
+            color: #757575;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+            background-color: white;
+            background-repeat: no-repeat;
+            background-position: 12px 11px;
+            &:hover
+
+        {
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25);
+        }
+
+        &:active {
+            background-color: #eeeeee;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25), 0 0 0 3px #c8dafc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo">
+                                <img src="~/admin/images/logo.svg" alt="logo">
+                            </div>
+
+                            <form class="pt-3" method="post">
+                                <div class="form-group">
+                                    <input asp-for="Username" type="text" class="form-control form-control-lg" placeholder="Username ">
+                                    <span asp-validation-for="Username"></span>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Password" type="password" class="form-control form-control-lg" placeholder="Password">
+                                    <span asp-validation-for="Password"></span>
+
+                                </div>
+                                <div asp-validation-summary="ModelOnly"></div>
+@*                                <input type="hidden" asp-for="ReturnUrl" />
+ *@
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn ">SIGN IN</button>
+                                </div>
+                                <form  method="post">
+
+                                    <button asp-action="externalLogin" asp-controller="account" asp-route-provider="Google" class="login-with-google-btn " style="margin-left:102px; margin-top:25px">
+                                    Sign in with Google
+                                </button>
+                                </form>
+                                <div class="text-center mt-4 font-weight-light">
+                                    Don't have an account? <a asp-action="Register" class="text-primary">Sign Up</a>
+                                </div>
+                                <div class="text-center mt-4 font-weight-light">
+                                    <a asp-controller="account" asp-action="forgetpassword">Can't remember password</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/admin/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/admin/js/off-canvas.js"></script>
+    <script src="~/admin/js/hoverable-collapse.js"></script>
+    <script src="~/admin/js/template.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>

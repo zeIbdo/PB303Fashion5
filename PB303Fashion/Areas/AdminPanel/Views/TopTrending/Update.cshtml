@@ -1,0 +1,51 @@
+﻿@model TopTrending
+
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Default form</h4>
+                <p class="card-description">
+                    Update slider
+                </p>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>SubText</label>
+                        <textarea id="SubText" asp-for="SubText" class="form-control" placeholder="name"></textarea>
+                        <span asp-validation-for="SubText"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="Content" asp-for="Content" class="form-control" placeholder="name"></textarea>
+                        <span asp-validation-for="Content"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="Description" asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input asp-for="ImageFile" class="form-control">
+                        <span asp-validation-for="ImageFile"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
+                    <a class="btn btn-light" asp-action="index">Cancel</a>
+                </form>
+                <div asp-validation-summary="ModelOnly"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+
+<script>
+    CKEDITOR.replace('SubText');
+    CKEDITOR.replace('Content');
+    CKEDITOR.replace('Description');
+    $('form').submit(function () {
+        for (var i in CKEDITOR.instances) {
+            CKEDITOR.instances[i].updateElement();
+        }
+    })
+</script>
